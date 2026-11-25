@@ -1,0 +1,15 @@
+{
+  "task_id": "brain_tumor",
+  "display_name": "Brain Tumor Detection",
+  "description": "Detects presence of brain tumors from MRI scans using contour-based ROI extraction and CNN classification",
+  "modality": "brain_mri",
+  "runtime": "keras",
+  "classes": ["No Tumor", "Tumor"],
+  "positive_class": "Tumor",
+  "input": { "width": 240, "height": 240, "color_order": "RGB", "normalization": "0_1", "preprocessing": "contour_crop" },
+  "models": [
+    { "id": "cnn_v1", "display_name": "Custom CNN", "weights": "model.h5", "enabled": true }
+  ],
+  "ensemble": { "strategy": "single" },
+  "explainability": "roi_overlay"
+}

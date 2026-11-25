@@ -1,0 +1,15 @@
+{
+  "task_id": "alzheimer",
+  "display_name": "Alzheimer's Stage Detection",
+  "description": "Classifies brain MRI scans into 4 stages of Alzheimer's disease progression using dual-model ensemble",
+  "modality": "brain_mri",
+  "runtime": "pytorch",
+  "classes": ["Non_Demented", "Very_Mild_Demented", "Mild_Demented", "Moderate_Demented"],
+  "input": { "width": 224, "height": 224, "color_order": "RGB", "normalization": "imagenet" },
+  "models": [
+    { "id": "resnet50", "display_name": "ResNet-50", "weights": "resnet50_best.pt", "enabled": true },
+    { "id": "vgg16",    "display_name": "VGG-16",    "weights": "vgg16_best.pt",    "enabled": true }
+  ],
+  "ensemble": { "strategy": "f1_weighted", "weights": [0.6, 0.4] },
+  "explainability": "gradcam"
+}

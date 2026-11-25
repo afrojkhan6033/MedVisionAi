@@ -1,0 +1,16 @@
+{
+  "task_id": "pneumonia",
+  "display_name": "Pneumonia Screening",
+  "description": "Detects pneumonia from chest X-ray scans using dual-model ensemble with calibrated thresholds",
+  "modality": "chest_scan",
+  "runtime": "pytorch",
+  "classes": ["Normal", "Pneumonia"],
+  "positive_class": "Pneumonia",
+  "input": { "width": 224, "height": 224, "color_order": "RGB", "normalization": "imagenet" },
+  "models": [
+    { "id": "densenet121", "display_name": "DenseNet-121", "weights": "densenet121_final.pth", "enabled": true },
+    { "id": "vgg16",       "display_name": "VGG-16",       "weights": "vgg16_final.pth",       "enabled": true }
+  ],
+  "ensemble": { "strategy": "weighted_average", "weights": [0.6, 0.4] },
+  "explainability": "gradcam"
+}

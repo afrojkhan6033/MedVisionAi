@@ -1,0 +1,4 @@
+{
+  "resnet50_temperature": 0.392196,
+  "vgg16_temperature": 0.357529
+}

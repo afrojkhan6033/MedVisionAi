@@ -1,0 +1,18 @@
+# ── Core API ──────────────────────────
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+python-multipart>=0.0.12
+pydantic>=2.0.0
+
+# ── Image Processing ─────────────────
+Pillow>=10.0.0
+numpy>=1.24.0
+opencv-python-headless>=4.9.0
+
+# ── PyTorch (Alzheimer + Pneumonia) ──
+torch>=2.2.0
+torchvision>=0.17.0
+
+# ── Keras  (Brain Tumor + COVID) ─────
+# Install tensorflow or tensorflow-cpu:
+tensorflow>=2.15.0

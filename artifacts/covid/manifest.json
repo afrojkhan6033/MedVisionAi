@@ -1,0 +1,17 @@
+{
+  "task_id": "covid",
+  "display_name": "COVID-19 Detection",
+  "description": "Classifies chest X-rays as COVID-19 positive or negative using multi-architecture majority-vote ensemble",
+  "modality": "chest_scan",
+  "runtime": "keras",
+  "classes": ["COVID-19", "NORMAL"],
+  "positive_class": "COVID-19",
+  "input": { "width": 64, "height": 64, "color_order": "RGB", "normalization": "0_1" },
+  "models": [
+    { "id": "resnet50",  "display_name": "ResNet-50",  "weights": "ResNet50_Model.keras",  "input_size": [64, 64],   "enabled": true },
+    { "id": "vgg16",     "display_name": "VGG-16",     "weights": "VGG16_Model.keras",     "input_size": [150, 150], "enabled": true },
+    { "id": "xception",  "display_name": "Xception",   "weights": "Xception_Model.keras",  "input_size": [64, 64],   "enabled": true }
+  ],
+  "ensemble": { "strategy": "majority_vote" },
+  "explainability": "none"
+}
